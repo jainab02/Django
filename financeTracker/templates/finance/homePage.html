@@ -1,0 +1,72 @@
+{% extends "finance/base.html" %}
+{% block start %}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+.text {
+	color: green;
+	font-weight: bold;
+	font-family: 'Times New Roman', Times, serif;
+}
+.ok {
+	color: white;
+	text-decoration: none;
+}
+.ok:hover {
+	color: white;
+	text-decoration: none;
+}
+</style>
+
+<div class="container mt-5 col-6">
+
+	<form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<br>
+		<label for="totalExp" name="totalExp"> <h3>Total Expenses: {{ totalExp }}</h3> </label>
+		<h4 style="font-family: 'Times New Roman', Times, serif;"> Enter Your Expenses</h4>
+	
+		<div class="form-group">
+		<label for="exampleInputEmail1">Expenses Details </label>
+		<input type="text" name="name" class="form-control" required>
+		</div>
+		<div class="form-group">
+		<label for="exampleInputEmail1">Price</label>
+		<input name="price" type="number" class="form-control" required>
+		</div>
+		<button type="submit" class="btn btn-success">Add Data</button>
+	</form>
+
+	<div class="class mt-5">
+		<form action="">
+			
+		{% comment %} <button class="btn btn-primary"> <a class="ok" href="#">Total Expenses </a></button> {% endcomment %}
+		<button class="btn btn-danger m-2 "> <a class="ok" href="{% url "logout" %}">Logout </a></button>
+		</form>
+
+		<table class="table mt-6">
+			<thead>
+				<tr>
+					<th scope="col">S.No. </th>
+					<th scope="col">Detail</th>
+					<th scope="col">Amount </th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for expense in expenses %}
+				<tr>
+					<th scope="row">{{forloop.counter}}</th>
+					<td>{{expense.name}}</td>
+					<td> ₹{{expense.price}}</td>
+
+					<td>
+						<a href="/deleteExp/{{expense.id }}" class="btn btn-danger m-2">Delete </a>
+						<a href="/updateExp/{{expense.id }}" class="btn btn-success">Update </a>
+					</td> 
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

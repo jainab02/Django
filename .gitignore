@@ -1,0 +1,13 @@
+# Django specific
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+
+# If you use a virtualenv
+venv/
+ENV/
+
+# PyCharm specific
+.idea/

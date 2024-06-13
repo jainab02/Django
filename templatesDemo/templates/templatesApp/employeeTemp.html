@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+  <head>
+    <title>Employee Info</title>
+    <link rel="stylesheet" href="{% static 'css/emp.css' %}" />
+  </head>
+  <body>
+    <h1>Employee data:</h1>
+    Name:{{ name }}
+    Role:{{ role }}
+    <br>
+
+    <img src=" {% static 'images/djangoSample.jpg' %} " alt="images" />
+  </body>
+</html>

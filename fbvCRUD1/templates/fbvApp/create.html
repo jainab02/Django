@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Form</title>
+</head>
+<body>
+    <h2>Create Student Info</h2>
+    <form  method="post">
+        <table>
+            {{form.as_table}}
+            {% csrf_token %}
+        </table>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+    <br><br><br>
+    
+</body>
+</html>
